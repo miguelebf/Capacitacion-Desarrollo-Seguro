@@ -1,0 +1,285 @@
+{
+  "info": {
+    "name": "Desarrollo Seguro Syscloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "bruno",
+      "event": []
+    },
+    {
+      "name": "Broken Object Level Authorization",
+      "item": [
+        {
+          "name": "Get User",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-user-id",
+                "value": "1",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/user?id=2",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}"
+              ],
+              "path": [
+                "user"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "2"
+                }
+              ],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Errors",
+      "item": [
+        {
+          "name": "Create User",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/users",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\":\"Miguel Bustamante\",\n  \"email\":\"miguelbustamantef@gmail.com\",\n  \"age\":\"20\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Injection",
+      "item": [
+        {
+          "name": "Good",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/safe?id=1 or 1=1",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}"
+              ],
+              "path": [
+                "safe"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1 or 1=1"
+                }
+              ],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Bad",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/vuulnerable?id=1 or 1=1",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}"
+              ],
+              "path": [
+                "vuulnerable"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1 or 1=1"
+                }
+              ],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data Validation",
+      "item": [
+        {
+          "name": "Create User",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/users",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\":\"Miguel Bustamante\",\n  \"email\":\"miguelbustamantef@gmail.com\",\n  \"age\":\"hola\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "JWT",
+      "item": [
+        {
+          "name": "JWT One Protected Route",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/protected",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}"
+              ],
+              "path": [
+                "protected"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/login",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}"
+              ],
+              "path": [
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "password",
+                  "value": "password",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Secure Config",
+      "item": [
+        {
+          "name": "Get",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": null,
+            "description": "",
+            "url": {
+              "raw": "http://{{url}}:{{port}}/",
+              "protocol": "http",
+              "host": [
+                "{{url}}:{{port}}/"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "port",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

@@ -1,15 +1,15 @@
 ## Autorización a Nivel de Objeto Vulnerable
 
-Instalar dependencias
+### Instalar dependencias
 ```
 npm install
 ```
 
-Versión Vulnerable
+### Versión Vulnerable
 ```
 node bad_version.js
 ```
-Versión Corregida
+### Versión Corregida
 ```
 node good_version.js
 ```

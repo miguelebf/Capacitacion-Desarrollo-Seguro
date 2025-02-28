@@ -1,0 +1,299 @@
+{
+  "name": "Desarrollo Seguro Syscloud",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "Broken Object Level Authorization",
+      "items": [
+        {
+          "type": "http",
+          "name": "Get User",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}:{{port}}/user?id=2",
+            "method": "GET",
+            "headers": [
+              {
+                "name": "x-user-id",
+                "value": "1",
+                "enabled": true
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "2",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Errors",
+      "items": [
+        {
+          "type": "http",
+          "name": "Create User",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}:{{port}}/users",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\":\"Miguel Bustamante\",\n  \"email\":\"miguelbustamantef@gmail.com\",\n  \"age\":\"20\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Injection",
+      "items": [
+        {
+          "type": "http",
+          "name": "Good",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}:{{port}}/safe?id=1 or 1=1",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "1 or 1=1",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Bad",
+          "seq": 2,
+          "request": {
+            "url": "http://{{url}}:{{port}}/vuulnerable?id=1 or 1=1",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "1 or 1=1",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Data Validation",
+      "items": [
+        {
+          "type": "http",
+          "name": "Create User",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}:{{port}}/users",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\":\"Miguel Bustamante\",\n  \"email\":\"miguelbustamantef@gmail.com\",\n  \"age\":\"hola\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "JWT",
+      "items": [
+        {
+          "type": "http",
+          "name": "JWT One Protected Route",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}:{{port}}/protected",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Login",
+          "seq": 2,
+          "request": {
+            "url": "http://{{url}}:{{port}}/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "multipartForm",
+              "formUrlEncoded": [],
+              "multipartForm": [
+                {
+                  "type": "text",
+                  "name": "username",
+                  "value": "admin",
+                  "enabled": true
+                },
+                {
+                  "type": "text",
+                  "name": "password",
+                  "value": "password",
+                  "enabled": true
+                }
+              ]
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Secure Config",
+      "items": [
+        {
+          "type": "http",
+          "name": "Get",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}:{{port}}/",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "activeEnvironmentUid": "0Gy9kW3t34by0r3BrL7eW",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "url",
+          "value": "localhost",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "port",
+          "value": "8080",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "Local Desarrollo Seguro"
+    }
+  ],
+  "brunoConfig": {
+    "version": "1",
+    "name": "Desarrollo Seguro Syscloud",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
