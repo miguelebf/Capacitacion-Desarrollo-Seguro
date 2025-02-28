@@ -44,5 +44,5 @@ app.get('/user', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Bad Version Server Broken Object Level Authorization started at ${port}`);
+    console.log(`Node Vuln Version Server Broken Object Level Authorization started at ${port}`);
 });

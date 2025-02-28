@@ -45,7 +45,7 @@ app.get('/user', (req, res) => {
 
 // Configuración del servidor con timeouts
 const server = app.listen(port, () => {
-    console.log(`Good Version Server Broken Object Level Authorization started at http://localhost:${port}`);
+    console.log(`Node Secure Version Server Broken Object Level Authorization started at http://localhost:${port}`);
 });
 
 // Configuración de timeouts

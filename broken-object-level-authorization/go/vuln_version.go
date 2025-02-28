@@ -54,6 +54,6 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/user", getUser)
-	fmt.Println("Bad Version Server Broken Object Level Authorization started at :8080")
+	fmt.Println("Go Vuln Version Server Broken Object Level Authorization started at :8080")
 	http.ListenAndServe(":8080", nil)
 }

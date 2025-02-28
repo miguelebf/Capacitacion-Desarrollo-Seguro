@@ -2,10 +2,10 @@
 
 Versión Vulnerable
 ```
-go run bad_version.go
+go run vuln_version.go
 ```
 
 Versión Corregida
 ```
-go run good_version.go
+go run secure_version.go
 ```
